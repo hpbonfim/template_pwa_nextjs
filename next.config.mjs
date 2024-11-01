@@ -66,7 +66,7 @@ const customNextConfig = async (phase) => {
     compiler: {
       // REF: https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
       removeConsole: {
-        exclude: ["error"]
+        exclude: ["error", "debug"]
       }
     },
     // REF: https://nextjs.org/docs/app/api-reference/next-config-js/httpAgentOptions
@@ -104,15 +104,6 @@ const customNextConfig = async (phase) => {
         "zod"
       ]
     },
-    // REF: https://nextjs.org/docs/app/api-reference/next-config-js/rewrites
-    async rewrites() {
-      return [
-        {
-          source: "/geolocation",
-          destination: "/"
-        }
-      ];
-    },
     // REF: https://nextjs.org/docs/app/api-reference/next-config-js/generateBuildId
     generateBuildId: async () => new Date().toISOString(),
 
@@ -129,7 +120,8 @@ const customNextConfig = async (phase) => {
       const sanitizeContentSecurityPolicy = () => {
         const defaultSrc = "default-src 'self'";
         const mediaSrc = "media-src 'self' blob:";
-        const scriptSrc = "script-src 'self' 'unsafe-eval' 'unsafe-inline'";
+        const scriptSrc =
+          "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob:";
         const styleSrc = "style-src 'self' 'unsafe-inline'";
         const imgSrc = `img-src ${CSP_URL.OPEN_STREET_MAP_URL} 'self' data: blob:`;
         const connectSrc = `connect-src  ${CSP_URL.OPEN_STREET_MAP_URL} ${CSP_URL.JSON_PLACEHOLDER_URL} 'self'`;

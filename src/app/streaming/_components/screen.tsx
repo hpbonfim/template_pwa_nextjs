@@ -21,7 +21,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip";
 import { toast } from "@/hooks/use-toast";
-import { useMediaScreen } from "@/hooks/useCapture";
+import { useMediaScreen } from "@/hooks/useMediaDevices";
 
 import MediaCard from "./media";
 

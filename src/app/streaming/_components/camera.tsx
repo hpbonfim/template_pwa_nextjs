@@ -21,7 +21,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip";
 import { toast } from "@/hooks/use-toast";
-import { useMediaCamera } from "@/hooks/useCapture";
+import { useMediaCamera } from "@/hooks/useMediaDevices";
 
 import MediaCard from "./media";
 
@@ -46,9 +46,7 @@ const CameraButton: React.FC<CameraButtonProps> = React.memo(
             <Icon className="size-4" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>
-          <p>{tooltipContent}</p>
-        </TooltipContent>
+        <TooltipContent>{tooltipContent}</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   )

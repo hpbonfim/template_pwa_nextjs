@@ -57,7 +57,7 @@ export interface IMediaFile extends IDBDataItem {
   data: Blob | MediaSource;
 }
 
-export const useMediaCamera = (): [CameraState, CameraActions] => {
+const useMediaCamera = (): [CameraState, CameraActions] => {
   const [state, setState] = useState<CameraState>({
     camera: { stream: null, audioEnabled: true, videoEnabled: true },
     recording: false,
@@ -77,8 +77,17 @@ export const useMediaCamera = (): [CameraState, CameraActions] => {
   const startCapture = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true
+        video: {
+          width: { min: 1280, ideal: 1920, max: 3840 },
+          height: { min: 720, ideal: 1080, max: 2160 },
+          frameRate: { min: 30, ideal: 60, max: 120 },
+          facingMode: { ideal: "environment" }
+        },
+        audio: {
+          autoGainControl: true,
+          noiseSuppression: true
+        },
+        preferCurrentTab: true
       });
       updateState({
         camera: { stream, audioEnabled: true, videoEnabled: true },
@@ -211,7 +220,7 @@ export const useMediaCamera = (): [CameraState, CameraActions] => {
   ];
 };
 
-export const useMediaScreen = (): [ScreenState, ScreenActions] => {
+const useMediaScreen = (): [ScreenState, ScreenActions] => {
   const [state, setState] = useState<ScreenState>({
     screen: { stream: null, audioEnabled: true, videoEnabled: true },
     recording: false,
@@ -364,3 +373,5 @@ export const useMediaScreen = (): [ScreenState, ScreenActions] => {
     }
   ];
 };
+
+export { useMediaCamera, useMediaScreen };

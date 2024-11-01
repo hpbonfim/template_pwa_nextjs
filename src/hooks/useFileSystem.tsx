@@ -1,12 +1,5 @@
 import { useState, useCallback } from "react";
 
-// Extend the Window interface to include showDirectoryPicker
-declare global {
-  interface Window {
-    showDirectoryPicker: () => Promise<FileSystemDirectoryHandle>;
-  }
-}
-
 type FileHandle = FileSystemFileHandle | null;
 interface DirectoryHandle extends FileSystemDirectoryHandle {
   entries: () => AsyncIterableIterator<[string, FileSystemHandle]>;
@@ -17,10 +10,18 @@ interface UseFileSystemReturn {
   fileHandle: FileHandle | null;
   error: string | null;
   requestDirectory: () => Promise<void>;
+  closeDirectory: () => void;
   createDirectory: (dirName?: string) => Promise<void>;
   createFile: (fileName: string, contents: string) => Promise<void>;
   getFile: (fileName: string) => Promise<string | null>;
-  listFiles: () => Promise<{ name: string; handle: FileSystemHandle }[]>;
+  updateFile: (
+    fileName: string,
+    newName: string,
+    contents: string
+  ) => Promise<void>;
+  listFiles: () => Promise<
+    { name: string; handle: FileSystemHandle; lastModified?: number }[]
+  >;
   deleteFile: (fileName: string) => Promise<void>;
   clearDirectory: () => Promise<void>;
 }
@@ -50,6 +51,12 @@ export const useFileSystem = (): UseFileSystemReturn => {
       );
     }
   }, [isFileSystemSupported]);
+
+  const closeDirectory = useCallback(() => {
+    setDirectoryHandle(null);
+    setFileHandle(null);
+    setError(null);
+  }, []);
 
   const ensureDirectoryHandle = useCallback(async (): Promise<boolean> => {
     if (!directoryHandle) {
@@ -171,14 +178,41 @@ export const useFileSystem = (): UseFileSystemReturn => {
     }
   }, [directoryHandle, ensureDirectoryHandle]);
 
+  const updateFile = useCallback(
+    async (
+      fileName: string,
+      newName: string,
+      contents: string
+    ): Promise<void> => {
+      if (!(await ensureDirectoryHandle())) return;
+      try {
+        if (fileName !== newName) {
+          await createFile(newName, contents);
+          await deleteFile(fileName);
+        } else {
+          await createFile(fileName, contents);
+        }
+        setError(null);
+      } catch (err) {
+        setError(
+          "Error updating file: " +
+            (err instanceof Error ? err.message : String(err))
+        );
+      }
+    },
+    [createFile, deleteFile, ensureDirectoryHandle]
+  );
+
   return {
     directoryHandle,
     fileHandle,
     error,
     requestDirectory,
+    closeDirectory,
     createDirectory,
     createFile,
     getFile,
+    updateFile,
     listFiles,
     deleteFile,
     clearDirectory

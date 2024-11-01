@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const Card = dynamic(() => import("./_components/_card"), { ssr: false });
+const Card = dynamic(() => import("./_components/card"), { ssr: false });
 
 export default function Page() {
   return <Card />;

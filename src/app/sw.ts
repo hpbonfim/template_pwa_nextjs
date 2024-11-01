@@ -16,7 +16,8 @@ const serwist = new Serwist({
   skipWaiting: true,
   clientsClaim: true,
   navigationPreload: true,
-  runtimeCaching: defaultCache
+  runtimeCaching: defaultCache,
+  disableDevLogs: true
 });
 
 self.addEventListener("push", (event) => {

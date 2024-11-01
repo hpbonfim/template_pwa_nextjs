@@ -27,7 +27,6 @@ const WebShare: React.FC = () => {
       webShare.isSupported !== null &&
       webShare.isSupported === false
     ) {
-      console.log("Web Share API is not supported");
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",

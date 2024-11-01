@@ -1,40 +1,74 @@
-# Next.js Template
+# PWA App Template
 
-A Next.js 13 with app directory template pre-configured with shadcn/ui and Tailwind CSS.
+This is a PWA App Template built with Next.js and Shadcn UI.
 
-## Technologies Used
+## Description
 
-- Next.js: The foundation of the project, providing server-side rendering, routing, and more.
-- shadcn/ui: A collection of re-usable components built using Radix UI and Tailwind CSS.
-- @tanstack/react-query: A powerful library for managing and caching server state in your application. It simplifies data fetching, caching, and state management.
-- Lucide: A collection of high-quality icons that you can easily incorporate into your application's UI.
-- zod: A robust and efficient TypeScript-first schema validation library to ensure your data is correctly structured.
-- ESLint: A popular JavaScript and TypeScript linter that helps you maintain a consistent and error-free codebase. It includes several plugins to enhance code quality, accessibility (a11y), Tailwind CSS, @tanstack/react-query, and import-helpers.
-- Prettier: An opinionated code formatter that ensures code consistency and improves code readability.
-- Husky: A tool that hooks into your Git workflow to run checks and tasks (such as linting and formatting) before commits, ensuring code quality and consistency.
+PWA App with Next.js and Shadcn UI.
 
-## How to Use
+## Installation
 
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
+To install the dependencies, run:
 
 ```bash
-pnpm create next-app -e https://github.com/henriquebonfim/pwa-template
+pnpm install
 ```
 
-## Contributing
+## Scripts
 
-If you'd like to contribute to this template or report issues, please follow these guidelines:
+- `dev`: Starts the development server with experimental HTTPS.
+- `build`: Builds the application for production.
+- `start`: Starts the production server.
+- `check:all`: Runs types:check, lint, and format.
+- `lint`: Runs ESLint with the Next.js config.
+- `format`: Formats the code with Prettier.
+- `types:check`: Runs the TypeScript type checker.
+- `prepare`: Sets up Husky.
+- `storybook`: Starts Storybook.
+- `storybook:build`: Builds Storybook.
 
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix:
+## Configuration
 
-```bash
-git checkout -b feature/your-feature-name
-```
+- `tailwind.config.js`: Configures Tailwind CSS.
+- `next.config.mjs`: Configures Next.js.
 
-3. Make your changes, commit, and push to your fork.
-4. Create a pull request against the main branch of this repository.
+## Dependencies
 
-Happy coding! 🚀
+- `next`: Next.js framework.
+- `react`: React library.
+- `react-dom`: React DOM library.
+- `@radix-ui/react-*`: Radix UI components.
+- `leaflet`: Leaflet map library.
+- `lucide-react`: Lucide React icons.
+- `react-leaflet`: React Leaflet library.
+- `react-resizable-panels`: React Resizable Panels library.
+- `zod`: Zod validation library.
+
+## Dev Dependencies
+
+- `@next/eslint-plugin-next`: Next.js ESLint plugin.
+- `@storybook/addon-*`: Storybook addons.
+- `@tanstack/eslint-plugin-query`: Tanstack ESLint plugin.
+- `@typescript-eslint/eslint-plugin`: TypeScript ESLint plugin.
+- `autoprefixer`: Autoprefixer CSS postprocessor.
+- `clsx`: clsx utility library.
+- `cz-conventional-changelog`: Conventional Changelog tool.
+- `eslint`: ESLint linter.
+- `eslint-config-next`: Next.js ESLint config.
+- `eslint-config-prettier`: Prettier ESLint config.
+- `eslint-plugin-import-helpers`: Import Helpers ESLint plugin.
+- `eslint-plugin-jsx-a11y`: JSX A11y ESLint plugin.
+- `eslint-plugin-storybook`: Storybook ESLint plugin.
+- `eslint-plugin-tailwindcss`: Tailwind CSS ESLint plugin.
+- `husky`: Husky Git hooks.
+- `idb`: IDB library.
+- `leaflet-defaulticon-compatibility`: Leaflet default icon compatibility library.
+- `lint-staged`: Lint Staged tool.
+- `postcss`: PostCSS CSS postprocessor.
+- `prettier`: Prettier code formatter.
+- `serwist`: Serwist library.
+- `storybook`: Storybook tool.
+- `tailwind-merge`: Tailwind Merge utility library.
+- `tailwind-variants`: Tailwind Variants utility library.
+- `tailwindcss`: Tailwind CSS library.
+- `typescript`: TypeScript compiler.

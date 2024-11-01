@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Page from "./page";
 
 const meta = {
-  title: "Pages/Home",
+  title: "Home",
   component: Page,
   parameters: {
     layout: "centered"

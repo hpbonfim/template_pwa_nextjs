@@ -18,11 +18,15 @@ export const NAV_ITEMS = [
   {
     label: "Streaming",
     href: "/streaming"
+  },
+  {
+    label: "File System",
+    href: "/file-system"
   }
 ] as const;
 
 export const LINKS = {
-  GITHUB_URL: "https://github.com/henriquebonfim/e-valuate",
+  GITHUB_URL: "https://github.com/henriquebonfim/template_pwa_nextjs",
   LINKEDIN_URL: "https://linkedin.com/in/henriquebonfim/",
   MZL_URL: "https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API"
 };
@@ -35,8 +39,7 @@ export const CONFIG = {
   APP_DEFAULT_TITLE: "My Awesome PWA App",
   APP_TITLE_TEMPLATE: "%s - PWA App",
   APP_DESCRIPTION: "Best PWA app in the world!",
-  APP_EMAIL_URL: "mailto:bonfim.henriquepaulo@gmail.com",
-  APP_URL: "https://ms-frontend-evaluate.onrender.com/",
+  APP_URL: "https://<YOUR_DOMAIN>.onrender.com/",
   APP_LANG: "en"
 } as const;
 

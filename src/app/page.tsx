@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,9 @@ export default function Page() {
         </Button>
         <Button variant="link" asChild>
           <Link href="/streaming">Stream API</Link>
+        </Button>
+        <Button variant="link" asChild>
+          <Link href="/file-system">File System</Link>
         </Button>
       </div>
     </main>

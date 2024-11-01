@@ -21,7 +21,7 @@ const GeolocationCard: React.FC = () => {
 
   const LeafletMap = useMemo(
     () =>
-      dynamic(() => import("@/app/geolocation/_components/_map"), {
+      dynamic(() => import("@/app/geolocation/_components/map"), {
         loading: () => <Skeleton className="h-[125px] w-[250px] rounded-xl" />,
         ssr: false
       }),

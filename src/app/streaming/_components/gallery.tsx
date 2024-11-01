@@ -22,8 +22,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ToastAction } from "@/components/ui/toast";
 import { DATABASE } from "@/constants";
 import { toast } from "@/hooks/use-toast";
-import type { IMediaFile } from "@/hooks/useCapture";
 import { useIndexedDB } from "@/hooks/useIndexedDB";
+import type { IMediaFile } from "@/hooks/useMediaDevices";
 
 interface MediaItemProps {
   item: IMediaFile;

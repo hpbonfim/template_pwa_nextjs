@@ -28,7 +28,7 @@ export const useIndexedDB = <T extends IDBDataItem>(storeName: string) => {
 
   useEffect(() => {
     if (!storeName) {
-      console.error("storeName is required for useIndexedDB hook");
+      alert("storeName is required for useIndexedDB hook");
       return;
     }
 
@@ -49,9 +49,8 @@ export const useIndexedDB = <T extends IDBDataItem>(storeName: string) => {
         );
         dbRef.current = database;
       } catch (error) {
-        console.error(
-          `Error initializing IndexedDB (${DATABASE.IDB_NAME}):`,
-          error
+        alert(
+          `Error initializing IndexedDB (${DATABASE.IDB_NAME}): ${JSON.stringify(error)}`
         );
       }
     };
